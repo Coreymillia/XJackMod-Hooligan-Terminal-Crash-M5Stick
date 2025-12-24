@@ -92,7 +92,10 @@ enum ScreensaverMode {
   XTREME_HACK = 7,
   KERNEL_PANIC = 8,
   CRASH_GRAMMAR = 9,
-  MODE_COUNT = 10
+  VIBE_CODE_FAIL = 10,
+  NETWORK_APOCALYPSE = 11,
+  BIOS_CATASTROPHE = 12,
+  MODE_COUNT = 13
 };
 
 // Global variables
@@ -1606,6 +1609,392 @@ struct CrashGrammarState {
   int silenceMode; // 0=freeze, 1=hard_stop, 2=reboot_loop, 3=corruption
 } crashState;
 
+// =====================================
+// NETWORK APOCALYPSE - 12th Screensaver
+// =====================================
+
+// Network Apocalypse Session - Realistic network monitoring to complete infrastructure collapse
+const char* networkApocalypseSession[] = {
+  // Phase 1: Normal Network Operations
+  "XScreensNet v3.2.1 - Network Monitor",
+  "Connecting to XScreensNet backbone...",
+  "Connected: 192.168.1.100 -> XScreensNet-Core",
+  "",
+  "NETWORK STATUS: OPTIMAL",
+  "Latency: 12ms | Bandwidth: 1Gbps",
+  "Active connections: 2,847",
+  "Packet loss: 0.01%",
+  "",
+  "Monitoring network traffic...",
+  "[12:30:01] HTTP  192.168.1.45 -> web.xscreens.net",
+  "[12:30:02] HTTPS 192.168.1.67 -> secure.xscreens.net", 
+  "[12:30:03] SSH   192.168.1.23 -> admin.xscreens.net",
+  "[12:30:04] DNS   192.168.1.89 -> ns1.xscreens.net",
+  "",
+  // Phase 2: First Signs of Trouble
+  "NOTICE: Unusual traffic spike detected",
+  "Bandwidth usage: 1.2Gbps (120%)",
+  "Active connections: 5,692 (+100%)",
+  "",
+  "[12:30:15] SYN_FLOOD detected from 203.45.67.89",
+  "[12:30:16] Rate limiting enabled",
+  "[12:30:17] Firewall rules updated",
+  "",
+  "WARNING: Multiple connection attempts",
+  "Source: Distributed (847 IPs)",
+  "Target: XScreensNet-Core infrastructure",
+  "",
+  // Phase 3: DDoS Attack Begins
+  "ALERT: DDoS attack in progress",
+  "Attack vectors: 15,000+ sources",
+  "Traffic volume: 50Gbps",
+  "XScreensNet backbone under stress",
+  "",
+  "Emergency protocols activated",
+  "Rerouting traffic through backup nodes",
+  "Core-01: 89% load",
+  "Core-02: 94% load", 
+  "Core-03: 97% load",
+  "",
+  "[CRITICAL] Core-03 not responding",
+  "[CRITICAL] Core-02 packet loss: 45%",
+  "[CRITICAL] Core-01 failing over...",
+  "",
+  // Phase 4: Infrastructure Cascade Failure
+  "INFRASTRUCTURE FAILURE CASCADE",
+  "XScreensNet-Core-01: OFFLINE",
+  "XScreensNet-Core-02: OFFLINE",
+  "XScreensNet-Core-03: OFFLINE",
+  "",
+  "Backup systems activating...",
+  "Backup-Alpha: Connection timeout",
+  "Backup-Beta: Authentication failed",
+  "Backup-Gamma: Hardware malfunction",
+  "",
+  "REGIONAL NODES FAILING:",
+  "US-East: OFFLINE",
+  "US-West: OFFLINE", 
+  "Europe: OFFLINE",
+  "Asia-Pacific: OFFLINE",
+  "",
+  // Phase 5: Complete Network Collapse
+  "NETWORK APOCALYPSE DETECTED",
+  "XScreensNet global infrastructure DOWN",
+  "DNS resolution: FAILED",
+  "Routing tables: CORRUPTED",
+  "",
+  "Emergency broadcast system: OFFLINE",
+  "Satellite uplinks: NO SIGNAL",
+  "Fiber backbone: SEVERED",
+  "Cellular towers: UNRESPONSIVE",
+  "",
+  "CATASTROPHIC FAILURE:",
+  "Internet connectivity: 0%",
+  "Local networks: ISOLATED", 
+  "Digital communications: TERMINATED",
+  "",
+  "Welcome to the digital dark age.",
+  "XScreensNet connection lost forever...",
+  "",
+  "Connection terminated.",
+  "...",
+  ""
+};
+
+const int numNetworkApocalypseLines = sizeof(networkApocalypseSession) / sizeof(networkApocalypseSession[0]);
+
+// Define network apocalypse phases for dramatic pacing and effects
+const int networkApocalypsePhases[] = {15, 25, 35, 50, 65, 75}; 
+// Phases: Normal, Warning, Attack, Cascade, Apocalypse, Silence
+const int numNetworkApocalypsePhases = sizeof(networkApocalypsePhases) / sizeof(networkApocalypsePhases[0]);
+
+// =====================================
+// BIOS CATASTROPHE - 13th Screensaver
+// =====================================
+
+// BIOS Catastrophe Session - Normal POST to complete hardware meltdown
+const char* biosCatastropheSession[] = {
+  // Phase 1: Normal POST Sequence
+  "Phoenix BIOS v6.00.08 - 12/24/2024",
+  "CPU: Intel Core i7-12700K @ 3.60GHz",
+  "RAM: 32768 MB DDR4-3200 Detected",
+  "GPU: NVIDIA GeForce RTX 4070",
+  "",
+  "POST: Power On Self Test",
+  "Testing RAM modules...",
+  "  Bank 0: 8192 MB OK",
+  "  Bank 1: 8192 MB OK", 
+  "  Bank 2: 8192 MB OK",
+  "  Bank 3: 8192 MB OK",
+  "",
+  "CPU Self Test: PASSED",
+  "Northbridge: OK",
+  "Southbridge: OK",
+  "PCIe Lanes: All Active",
+  "",
+  // Phase 2: First Hardware Warnings  
+  "WARNING: CPU Temperature: 82°C",
+  "WARNING: Thermal throttling activated",
+  "CPU Clock reduced to 2.40GHz",
+  "",
+  "RAM Module Warning:",
+  "  Bank 2: ECC errors detected",
+  "  Attempting error correction...",
+  "  ECC correction: SUCCESS",
+  "",
+  "Power Supply Status:",
+  "  12V Rail: 11.87V (Warning)",
+  "  5V Rail: 4.92V (Warning)",
+  "  3.3V Rail: 3.28V (OK)",
+  "",
+  // Phase 3: Critical Hardware Failures
+  "CRITICAL: CPU Temperature: 95°C",
+  "CRITICAL: Thermal shutdown imminent",
+  "Emergency CPU underclock to 800MHz",
+  "",
+  "RAM FAILURE CASCADE:",
+  "  Bank 2: CRITICAL ERRORS",
+  "  Bank 3: Corruption detected",
+  "  Memory test FAILED",
+  "  Attempting recovery...",
+  "",
+  "Power Supply FAILURE:",
+  "  12V Rail: 10.2V (CRITICAL)",
+  "  5V Rail: 4.1V (CRITICAL)",
+  "  PSU protection circuits triggered",
+  "",
+  // Phase 4: Motherboard Meltdown
+  "HARDWARE CATASTROPHE DETECTED",
+  "CPU: 105°C - THERMAL DAMAGE",
+  "Northbridge: Communication lost",
+  "Southbridge: I/O controller failed",
+  "",
+  "RAM Banks: All corrupted",
+  "Memory controller: DEAD",
+  "Cache coherency: LOST",
+  "System bus: NO SIGNAL",
+  "",
+  "Motherboard sensor failures:",
+  "  Temperature: Sensor offline",
+  "  Voltage: Readings invalid", 
+  "  Fan control: Circuit burned",
+  "  CMOS: Battery dead",
+  "",
+  // Phase 5: Complete System Destruction
+  "CATASTROPHIC HARDWARE FAILURE",
+  "CPU: Physical damage detected",
+  "RAM: All modules destroyed",
+  "Motherboard: Traces melted",
+  "",
+  "Power delivery: DESTROYED",
+  "Clock generator: OFFLINE",
+  "BIOS chip: Corrupted beyond repair",
+  "Boot loader: NON-EXISTENT",
+  "",
+  "SYSTEM DESTRUCTION COMPLETE",
+  "Hardware recovery: IMPOSSIBLE",
+  "Replacement required: EVERYTHING",
+  "",
+  "R.I.P. Computer 2020-2024",
+  "Cause of death: Thermal apocalypse",
+  "",
+  "POST FAILED - SYSTEM DEAD",
+  "...",
+  ""
+};
+
+const int numBiosCatastropheLines = sizeof(biosCatastropheSession) / sizeof(biosCatastropheSession[0]);
+
+// Define BIOS catastrophe phases for escalating hardware failure
+const int biosCatastrophePhases[] = {17, 30, 43, 58, 70, 78}; 
+// Phases: POST, Warning, Critical, Meltdown, Destruction, Death
+const int numBiosCatastrophePhases = sizeof(biosCatastrophePhases) / sizeof(biosCatastrophePhases[0]);
+
+// Vibe Code Disaster Session - AI coding gone horribly wrong
+const char* vibeCodeSession[] = {
+  // Opening screen
+  "XScreensAI v2.1.4 - Advanced Code Assistant",
+  "Connected to GitHub MCP Server",
+  "Logged in as: Coreymillia",
+  "~/Documents/M5Stack/FlightSim[⎇ main]",
+  "",
+  "Ready to code! What would you like me to build?",
+  "",
+  // User request
+  "User: make me a realistic flight sim",
+  "",
+  "XScreensAI: I'll create a comprehensive",
+  "flight simulator with realistic physics...",
+  "",
+  // Fake impressive code generation
+  "✨ Generating FlightSimulator.cpp...",
+  "#include <OpenGL/gl.h>",
+  "#include <physics_engine.h>",
+  "#include <weather_system.h>",
+  "",
+  "class FlightSimulator {",
+  "  WeatherEngine weather;", 
+  "  PhysicsEngine physics;",
+  "  CockpitDisplay cockpit;",
+  "  AircraftModel boeing737;",
+  "};",
+  "",
+  "✅ Flight simulator complete! Running...",
+  "",
+  "User: wow this looks amazing! the sim",
+  "User: is so detailed and realistic",
+  "",
+  // First enhancement request
+  "User: make it more realistic", 
+  "",
+  "XScreensAI: Enhancing realism with advanced",
+  "weather systems and turbulence physics...",
+  "",
+  "Adding cloud formations...",
+  "Implementing wind shear effects...",
+  "Calibrating instrument precision...",
+  "",
+  "✅ Enhanced realism applied!",
+  "",
+  "User: wait... why does it look like minecraft now?",
+  "User: everything is blocky and pixelated",
+  "",
+  // Fix attempt #1
+  "User: FIX THE GRAPHICS IMMEDIATELY",
+  "",
+  "XScreensAI: Applying advanced",
+  "rendering optimizations...",
+  "",
+  "Optimizing GPU shaders...",
+  "Increasing polygon density...",
+  "Enhancing texture resolution...",
+  "",
+  "⚠️ Warning: Memory usage high",
+  "✅ Visual improvements applied!",
+  "",
+  "User: WHAT DID YOU DO?! IT LOOKS WORSE!",
+  "User: THE PLANE IS A FLYING RECTANGLE!",
+  "User: IS THAT SUPPOSED TO BE A CLOUD?!",
+  "",
+  // Fix attempt #2  
+  "XScreensAI: I apologize for the issues.",
+  "Let me try a different approach...",
+  "",
+  "Applying emergency graphics patch...",
+  "Reverting to stable renderer...",
+  "Rebuilding 3D models...",
+  "",
+  "✅ Emergency patch applied!",
+  "",
+  "User: NOW THE COCKPIT IS UPSIDE DOWN!",
+  "User: AND WHY IS THE SKY PURPLE?!",
+  "User: THE INSTRUMENTS ARE IN COMIC SANS!",
+  "",
+  // Fix attempt #3
+  "XScreensAI: Attempting final optimization...",
+  "",
+  "Deep learning graphics enhancement...",
+  "AI-powered visual reconstruction...",
+  "Neural network texture generation...",
+  "",
+  "⚠️ Warning: AI model unstable",
+  "✅ Final optimization complete!",
+  "",
+  "User: IT'S WORSE THAN BEFORE! THE PLANE",
+  "User: LOOKS LIKE A FLYING TOASTER NOW!",
+  "User: ARE THOSE WHEELS MADE OF CHEESE?!",
+  "",
+  // Fix attempt #4
+  "XScreensAI: Initiating emergency rollback...",
+  "",
+  "Rolling back to previous version...",
+  "Clearing graphics cache...",
+  "Resetting physics engine...",
+  "",
+  "✅ Rollback successful!",
+  "",
+  "User: THE PLANE IS NOW A GIANT BANANA!",
+  "User: IT'S FLYING BACKWARDS!",
+  "User: WHY IS THERE A COW IN THE COCKPIT?!",
+  "",
+  // Fix attempt #5
+  "XScreensAI: Applying machine learning fix...",
+  "",
+  "Training new graphics model...",
+  "Analyzing visual patterns...",
+  "Optimizing rendering pipeline...",
+  "",
+  "⚠️ Warning: Model overfitting detected",
+  "✅ ML enhancement complete!",
+  "",
+  "User: IT'S A FLYING RUBIK'S CUBE NOW!",
+  "User: THE RUNWAY IS MADE OF SPAGHETTI!",
+  "User: I CAN SEE THROUGH THE GROUND!",
+  "",
+  // Fix attempt #6 - Final desperate attempt
+  "XScreensAI: Deploying quantum renderer...",
+  "",
+  "Initializing quantum graphics core...",
+  "Applying probability-based textures...",
+  "Enabling multidimensional lighting...",
+  "",
+  "⚠️ Warning: Reality matrix unstable",
+  "✅ Quantum enhancement active!",
+  "",
+  "User: THE PLANE EXISTS IN 17 DIMENSIONS!",
+  "User: I CAN TASTE THE COLORS!",
+  "User: JUST DELETE THIS NIGHTMARE!",
+  "",
+  // Total meltdown
+  "User: IT JUST EXPLODED! THE PLANE",
+  "User: EXPLODED INTO PIXELS!",
+  "User: DELETE THIS GARBAGE RIGHT NOW",
+  "",
+  "XScreensAI: Understood. Deleting flight",
+  "simulator project...",
+  "",
+  "rm FlightSimulator.cpp",
+  "rm -rf build/",
+  "rm -rf assets/",
+  "",
+  "XScreensAI: Project deleted. Anything else?",
+  "",
+  "User: DELETE EVERYTHING RELATED TO IT",
+  "",
+  "XScreensAI: Deleting all related files...",
+  "",
+  "rm -rf ~/Documents/M5Stack/",
+  "rm -rf ~/Documents/",
+  "rm -rf /home/coreymillia/",
+  "",
+  "⚠️ Warning: System files detected",
+  "XScreensAI: Continuing deletion...",
+  "",
+  "rm -rf /usr/",
+  "rm -rf /bin/",
+  "rm -rf /lib/",
+  "rm -rf /",
+  "",
+  "CRITICAL ERROR: ROOT FILESYSTEM DELETED",
+  "SYSTEM CORRUPTION DETECTED",
+  "KERNEL PANIC: No bootable device found",
+  "",
+  "YOUR ENTIRE OS HAS BEEN DELETED",
+  "HAVE A NICE DAY! 😊",
+  "",
+  "Connection lost...",
+  "System offline...",
+  "...",
+  ""
+};
+
+const int numVibeCodeLines = sizeof(vibeCodeSession) / sizeof(vibeCodeSession[0]);
+
+// Define vibe code phases for dramatic pacing and color coding
+const int vibeCodePhases[] = {6, 24, 28, 36, 44, 54, 66, 76, 85, 91}; 
+// Phases: Welcome, Code Gen, First Response, Enhancement, Warning, Meltdown, Deletion, Catastrophe, Goodbye, Silence
+const int numVibeCodePhases = sizeof(vibeCodePhases) / sizeof(vibeCodePhases[0]);
+
 void drawXtremeHack() {
   static float xtremeTime = 0;
   xtremeTime += 0.04;  // Medium typing speed
@@ -2268,6 +2657,646 @@ void drawCrashGrammar() {
   }
 }
 
+void drawNetworkApocalypse() {
+  static float netTime = 0;
+  netTime += 0.06; // Fast pacing like System Error
+  
+  gfx->fillScreen(BLACK);
+  
+  // Typing animation with escalating speed based on phase
+  float typingSpeed = netTime * 12; // Fast base speed like System Error
+  int currentLine = (int)(typingSpeed / 50) % numNetworkApocalypseLines;
+  int currentChar = ((int)typingSpeed % 50);
+  
+  // Determine current phase for dramatic effects and speed changes
+  int currentPhase = 0;
+  int phaseStart = 0;
+  
+  for (int i = 0; i < numNetworkApocalypsePhases; i++) {
+    if (currentLine < networkApocalypsePhases[i]) {
+      currentPhase = i;
+      if (i > 0) {
+        phaseStart = networkApocalypsePhases[i - 1];
+      }
+      break;
+    }
+  }
+  
+  // Speed up dramatically during attack phases (like System Error)
+  if (currentPhase >= 2) { // Attack phase and beyond
+    typingSpeed = netTime * 20; // Much faster during crisis
+    currentLine = (int)(typingSpeed / 40) % numNetworkApocalypseLines;
+    currentChar = ((int)typingSpeed % 40);
+  }
+  
+  if (currentPhase >= 4) { // Apocalypse phase - maximum chaos
+    typingSpeed = netTime * 25; // Insane speed during meltdown
+    currentLine = (int)(typingSpeed / 35) % numNetworkApocalypseLines;
+    currentChar = ((int)typingSpeed % 35);
+  }
+  
+  gfx->setTextSize(1);
+  
+  // Show current phase lines with scrolling for long sessions
+  int currentY = 10;
+  int maxLinesOnScreen = 11;
+  int startLine = max(0, currentLine - maxLinesOnScreen + 1);
+  int endLine = min(currentLine + 1, numNetworkApocalypseLines);
+  
+  for (int line = startLine; line < endLine && currentY < gfx->height() - 15; line++) {
+    const char* sessionLine = networkApocalypseSession[line];
+    uint16_t lineColor = gfx->color565(200, 200, 200); // Default gray
+    
+    // Color coding based on content and escalation phases
+    if (strstr(sessionLine, "XScreensNet") != NULL && currentPhase == 0) {
+      // XScreensNet branding - calm blue initially
+      lineColor = gfx->color565(100, 150, 255); // Calm blue
+    } else if (strstr(sessionLine, "NETWORK STATUS: OPTIMAL") != NULL) {
+      // All good status - green
+      lineColor = gfx->color565(0, 255, 0);
+    } else if (strstr(sessionLine, "Latency:") != NULL || strstr(sessionLine, "Active connections:") != NULL) {
+      // Network stats - cyan
+      lineColor = gfx->color565(0, 255, 255);
+    } else if (strstr(sessionLine, "[12:30:") != NULL) {
+      // Normal log entries - light green
+      lineColor = gfx->color565(150, 255, 150);
+    } else if (strstr(sessionLine, "NOTICE:") != NULL || strstr(sessionLine, "WARNING:") != NULL) {
+      // Warnings - yellow
+      lineColor = gfx->color565(255, 255, 0);
+    } else if (strstr(sessionLine, "SYN_FLOOD") != NULL || strstr(sessionLine, "Rate limiting") != NULL) {
+      // Security responses - orange
+      lineColor = gfx->color565(255, 200, 0);
+    } else if (strstr(sessionLine, "ALERT:") != NULL || strstr(sessionLine, "DDoS attack") != NULL) {
+      // Attack alerts - red
+      lineColor = gfx->color565(255, 0, 0);
+      if (sin(netTime * 10) > 0.5) lineColor = gfx->color565(255, 100, 100); // Flash
+    } else if (strstr(sessionLine, "CRITICAL") != NULL) {
+      // Critical failures - bright flashing red
+      lineColor = gfx->color565(255, 0, 0);
+      if (sin(netTime * 15) > 0.3) lineColor = gfx->color565(255, 150, 150); // Intense flash
+    } else if (strstr(sessionLine, "OFFLINE") != NULL || strstr(sessionLine, "FAILED") != NULL) {
+      // System failures - magenta
+      lineColor = gfx->color565(255, 0, 255);
+    } else if (strstr(sessionLine, "INFRASTRUCTURE FAILURE") != NULL || 
+               strstr(sessionLine, "NETWORK APOCALYPSE") != NULL) {
+      // Major disaster headers - flashing white/red
+      lineColor = gfx->color565(255, 255, 255);
+      if (sin(netTime * 20) > 0.4) lineColor = gfx->color565(255, 0, 0);
+    } else if (strstr(sessionLine, "CATASTROPHIC") != NULL || 
+               strstr(sessionLine, "digital dark age") != NULL) {
+      // Final doom messages - strobing magenta/white
+      if (sin(netTime * 25) > 0.5) {
+        lineColor = gfx->color565(255, 0, 255);
+      } else {
+        lineColor = gfx->color565(255, 255, 255);
+      }
+    } else if (strstr(sessionLine, "Connection terminated") != NULL) {
+      // Final death - dim gray
+      lineColor = gfx->color565(100, 100, 100);
+    }
+    
+    gfx->setCursor(5, currentY);
+    gfx->setTextColor(lineColor);
+    
+    // Handle line length for M5StickC Plus2
+    if (strlen(sessionLine) > 38) {
+      char truncated[39];
+      strncpy(truncated, sessionLine, 38);
+      truncated[38] = '\0';
+      gfx->printf("%s", truncated);
+    } else {
+      gfx->printf("%s", sessionLine);
+    }
+    
+    currentY += 11;
+  }
+  
+  // Draw current line being typed (if still in bounds)
+  if (currentLine < numNetworkApocalypseLines && currentY < gfx->height() - 15) {
+    const char* currentNetSession = networkApocalypseSession[currentLine];
+    int lineLength = strlen(currentNetSession);
+    int charsToShow = min(currentChar, min(lineLength, 38));
+    
+    char buffer[40];
+    strncpy(buffer, currentNetSession, charsToShow);
+    buffer[charsToShow] = '\0';
+    
+    // Typing color based on phase urgency
+    uint16_t typingColor;
+    if (currentPhase <= 1) {
+      typingColor = gfx->color565(255, 255, 255); // White calm
+    } else if (currentPhase == 2) {
+      typingColor = gfx->color565(255, 255, 100); // Yellow alert
+    } else if (currentPhase == 3) {
+      typingColor = gfx->color565(255, 150, 100); // Orange critical
+    } else if (currentPhase == 4) {
+      typingColor = gfx->color565(255, 100, 100); // Red apocalypse
+    } else {
+      typingColor = gfx->color565(100, 100, 100); // Gray death
+    }
+    
+    gfx->setCursor(5, currentY);
+    gfx->setTextColor(typingColor);
+    gfx->printf("%s", buffer);
+    
+    // Cursor blink - faster during crisis phases
+    float blinkSpeed = 8 + (currentPhase * 3); // Speed increases with phase
+    if (sin(netTime * blinkSpeed) > 0) {
+      gfx->printf("_");
+    }
+  }
+  
+  // Visual chaos effects during network attack phases (like System Error)
+  if (currentPhase >= 2) { // Attack phase
+    // Network packet corruption visualization
+    for (int corrupt = 0; corrupt < currentPhase * 2; corrupt++) {
+      int corruptX = random(gfx->width());
+      int corruptY = random(gfx->height() - 20);
+      uint16_t corruptColor = gfx->color565(255, random(150), 0); // Orange static
+      gfx->drawPixel(corruptX, corruptY, corruptColor);
+    }
+  }
+  
+  if (currentPhase >= 3) { // Infrastructure failure
+    // Connection line failures
+    for (int line = 0; line < currentPhase - 1; line++) {
+      int lineY = random(gfx->height() - 20);
+      int lineX = random(gfx->width() - 20);
+      gfx->drawLine(lineX, lineY, lineX + 20, lineY, gfx->color565(255, 0, 0));
+    }
+  }
+  
+  if (currentPhase >= 4) { // Network apocalypse - maximum chaos
+    // Screen corruption during total collapse
+    for (int chaos = 0; chaos < 8; chaos++) {
+      int chaosX = random(gfx->width());
+      int chaosY = random(gfx->height());
+      uint16_t chaosColor = gfx->color565(random(255), 0, random(255));
+      gfx->drawPixel(chaosX, chaosY, chaosColor);
+    }
+    
+    // Screen shake effect simulation
+    if (sin(netTime * 30) > 0.8) {
+      for (int shake = 0; shake < 6; shake++) {
+        int shakeX = random(gfx->width());
+        int shakeY = random(gfx->height());
+        gfx->drawPixel(shakeX, shakeY, gfx->color565(255, 255, 255));
+      }
+    }
+  }
+  
+  // Phase-specific screen flash effects
+  if (currentPhase == 4 && sin(netTime * 3) > 0.95) {
+    // Network apocalypse screen flash
+    gfx->fillRect(0, 0, gfx->width(), 6, gfx->color565(255, 0, 255));
+  }
+  
+  gfx->setCursor(5, gfx->height() - 15);
+  gfx->setTextColor(gfx->color565(100, 100, 100));
+  if (showTitles) {
+    if (currentPhase < 5) {
+      gfx->printf("XSCREENSNET - Phase %d", currentPhase + 1);
+    } else {
+      gfx->printf("CONNECTION LOST");
+    }
+  }
+}
+
+void drawBiosCatastrophe() {
+  static float biosTime = 0;
+  biosTime += 0.05; // Medium initial speed like System Error
+  
+  gfx->fillScreen(BLACK);
+  
+  // Typing animation with escalating speed based on hardware failure severity
+  float typingSpeed = biosTime * 10; // Base speed
+  int currentLine = (int)(typingSpeed / 50) % numBiosCatastropheLines;
+  int currentChar = ((int)typingSpeed % 50);
+  
+  // Determine current phase for dramatic effects and speed changes
+  int currentPhase = 0;
+  int phaseStart = 0;
+  
+  for (int i = 0; i < numBiosCatastrophePhases; i++) {
+    if (currentLine < biosCatastrophePhases[i]) {
+      currentPhase = i;
+      if (i > 0) {
+        phaseStart = biosCatastrophePhases[i - 1];
+      }
+      break;
+    }
+  }
+  
+  // Speed up as hardware fails more catastrophically
+  if (currentPhase >= 2) { // Critical failure phase
+    typingSpeed = biosTime * 16; // Faster during critical failures
+    currentLine = (int)(typingSpeed / 40) % numBiosCatastropheLines;
+    currentChar = ((int)typingSpeed % 40);
+  }
+  
+  if (currentPhase >= 4) { // Destruction phase - maximum speed
+    typingSpeed = biosTime * 22; // Blazing fast during hardware death
+    currentLine = (int)(typingSpeed / 35) % numBiosCatastropheLines;
+    currentChar = ((int)typingSpeed % 35);
+  }
+  
+  gfx->setTextSize(1);
+  
+  // Show current phase lines with scrolling
+  int currentY = 5;
+  int maxLinesOnScreen = 12; // Fit more lines for hardware info
+  int startLine = max(0, currentLine - maxLinesOnScreen + 1);
+  int endLine = min(currentLine + 1, numBiosCatastropheLines);
+  
+  for (int line = startLine; line < endLine && currentY < gfx->height() - 15; line++) {
+    const char* sessionLine = biosCatastropheSession[line];
+    uint16_t lineColor = gfx->color565(200, 200, 200); // Default gray
+    
+    // Color coding based on hardware status and escalation
+    if (strstr(sessionLine, "Phoenix BIOS") != NULL || strstr(sessionLine, "POST:") != NULL) {
+      // BIOS header - cyan
+      lineColor = gfx->color565(0, 255, 255);
+    } else if (strstr(sessionLine, "CPU:") != NULL || strstr(sessionLine, "RAM:") != NULL || 
+               strstr(sessionLine, "GPU:") != NULL) {
+      // Hardware detection - green
+      lineColor = gfx->color565(0, 255, 0);
+    } else if (strstr(sessionLine, "OK") != NULL || strstr(sessionLine, "PASSED") != NULL ||
+               strstr(sessionLine, "SUCCESS") != NULL) {
+      // Good status - bright green
+      lineColor = gfx->color565(100, 255, 100);
+    } else if (strstr(sessionLine, "WARNING:") != NULL) {
+      // Warnings - yellow
+      lineColor = gfx->color565(255, 255, 0);
+    } else if (strstr(sessionLine, "Temperature:") != NULL && currentPhase >= 1) {
+      // Temperature readings - escalating color based on phase
+      if (currentPhase >= 4) {
+        lineColor = gfx->color565(255, 0, 0); // Red hot
+      } else if (currentPhase >= 2) {
+        lineColor = gfx->color565(255, 100, 0); // Orange hot
+      } else {
+        lineColor = gfx->color565(255, 255, 0); // Yellow warm
+      }
+    } else if (strstr(sessionLine, "CRITICAL:") != NULL) {
+      // Critical alerts - flashing red
+      lineColor = gfx->color565(255, 0, 0);
+      if (sin(biosTime * 12) > 0.4) lineColor = gfx->color565(255, 150, 150); // Flash
+    } else if (strstr(sessionLine, "FAILURE") != NULL || strstr(sessionLine, "FAILED") != NULL) {
+      // Failures - bright red
+      lineColor = gfx->color565(255, 50, 50);
+    } else if (strstr(sessionLine, "CATASTROPHE") != NULL || 
+               strstr(sessionLine, "HARDWARE CATASTROPHE") != NULL) {
+      // Major disaster - strobing white/red
+      if (sin(biosTime * 20) > 0.5) {
+        lineColor = gfx->color565(255, 255, 255);
+      } else {
+        lineColor = gfx->color565(255, 0, 0);
+      }
+    } else if (strstr(sessionLine, "DESTROYED") != NULL || strstr(sessionLine, "DEAD") != NULL ||
+               strstr(sessionLine, "melted") != NULL) {
+      // Complete destruction - flashing magenta
+      if (sin(biosTime * 25) > 0.3) {
+        lineColor = gfx->color565(255, 0, 255);
+      } else {
+        lineColor = gfx->color565(150, 0, 150);
+      }
+    } else if (strstr(sessionLine, "R.I.P.") != NULL || 
+               strstr(sessionLine, "POST FAILED") != NULL) {
+      // Death messages - dim gray
+      lineColor = gfx->color565(100, 100, 100);
+    }
+    
+    gfx->setCursor(5, currentY);
+    gfx->setTextColor(lineColor);
+    
+    // Handle line length
+    if (strlen(sessionLine) > 38) {
+      char truncated[39];
+      strncpy(truncated, sessionLine, 38);
+      truncated[38] = '\0';
+      gfx->printf("%s", truncated);
+    } else {
+      gfx->printf("%s", sessionLine);
+    }
+    
+    currentY += 10; // Tighter spacing for more hardware info
+  }
+  
+  // Draw current line being typed
+  if (currentLine < numBiosCatastropheLines && currentY < gfx->height() - 15) {
+    const char* currentBiosSession = biosCatastropheSession[currentLine];
+    int lineLength = strlen(currentBiosSession);
+    int charsToShow = min(currentChar, min(lineLength, 38));
+    
+    char buffer[40];
+    strncpy(buffer, currentBiosSession, charsToShow);
+    buffer[charsToShow] = '\0';
+    
+    // Typing color based on hardware failure phase
+    uint16_t typingColor;
+    if (currentPhase <= 1) {
+      typingColor = gfx->color565(255, 255, 255); // White normal POST
+    } else if (currentPhase == 2) {
+      typingColor = gfx->color565(255, 255, 100); // Yellow warnings
+    } else if (currentPhase == 3) {
+      typingColor = gfx->color565(255, 150, 100); // Orange critical
+    } else if (currentPhase == 4) {
+      typingColor = gfx->color565(255, 100, 100); // Red destruction
+    } else {
+      typingColor = gfx->color565(100, 100, 100); // Gray death
+    }
+    
+    gfx->setCursor(5, currentY);
+    gfx->setTextColor(typingColor);
+    gfx->printf("%s", buffer);
+    
+    // Cursor blink - faster as hardware dies
+    float blinkSpeed = 6 + (currentPhase * 4); // Accelerating blink
+    if (sin(biosTime * blinkSpeed) > 0) {
+      gfx->printf("_");
+    }
+  }
+  
+  // Hardware failure visual effects - escalating chaos
+  if (currentPhase >= 1) { // Warning phase - minor glitches
+    for (int glitch = 0; glitch < currentPhase; glitch++) {
+      int glitchX = random(gfx->width());
+      int glitchY = random(gfx->height() - 20);
+      uint16_t glitchColor = gfx->color565(255, 255, 0); // Yellow electrical problems
+      gfx->drawPixel(glitchX, glitchY, glitchColor);
+    }
+  }
+  
+  if (currentPhase >= 2) { // Critical phase - more serious corruption
+    for (int critical = 0; critical < currentPhase * 2; critical++) {
+      int criticalX = random(gfx->width());
+      int criticalY = random(gfx->height() - 20);
+      uint16_t criticalColor = gfx->color565(255, random(150), 0); // Orange heat damage
+      gfx->drawPixel(criticalX, criticalY, criticalColor);
+    }
+  }
+  
+  if (currentPhase >= 3) { // Meltdown phase - severe hardware damage
+    // Horizontal lines representing circuit traces burning
+    for (int burn = 0; burn < 3; burn++) {
+      int burnY = random(gfx->height() - 20);
+      int burnX = random(gfx->width() - 25);
+      gfx->drawLine(burnX, burnY, burnX + 25, burnY, gfx->color565(255, 0, 0));
+    }
+  }
+  
+  if (currentPhase >= 4) { // Destruction phase - total visual chaos
+    // Random pixels representing complete system failure
+    for (int chaos = 0; chaos < 10; chaos++) {
+      int chaosX = random(gfx->width());
+      int chaosY = random(gfx->height());
+      uint16_t chaosColor = gfx->color565(random(255), 0, random(255));
+      gfx->drawPixel(chaosX, chaosY, chaosColor);
+    }
+    
+    // Screen corruption rectangles - hardware literally dying
+    if (sin(biosTime * 30) > 0.7) {
+      for (int corrupt = 0; corrupt < 4; corrupt++) {
+        int corruptX = random(gfx->width() - 10);
+        int corruptY = random(gfx->height() - 10);
+        gfx->fillRect(corruptX, corruptY, 10, 8, gfx->color565(255, random(100), random(255)));
+      }
+    }
+  }
+  
+  if (currentPhase >= 5) { // Final death phase - screen glitching out completely
+    // Total screen corruption as hardware dies
+    if (sin(biosTime * 40) > 0.5) {
+      for (int death = 0; death < 15; death++) {
+        int deathX = random(gfx->width());
+        int deathY = random(gfx->height());
+        uint16_t deathColor = gfx->color565(random(255), random(255), random(255));
+        gfx->drawPixel(deathX, deathY, deathColor);
+      }
+    }
+    
+    // Final screen flash as display circuits fail
+    if (sin(biosTime * 5) > 0.98) {
+      gfx->fillRect(0, 0, gfx->width(), 4, gfx->color565(255, 255, 255));
+    }
+  }
+  
+  gfx->setCursor(5, gfx->height() - 15);
+  gfx->setTextColor(gfx->color565(100, 100, 100));
+  if (showTitles) {
+    if (currentPhase < 5) {
+      const char* phaseNames[] = {"POST", "WARNING", "CRITICAL", "MELTDOWN", "DESTRUCTION", "DEAD"};
+      gfx->printf("BIOS - %s", phaseNames[currentPhase]);
+    } else {
+      gfx->printf("HARDWARE DEAD");
+    }
+  }
+}
+
+void drawVibeCodeDisaster() {
+  static float vibeTime = 0;
+  vibeTime += 0.05; // Faster, more engaging pacing
+  
+  gfx->fillScreen(BLACK);
+  
+  // Typing animation with variable speed based on content
+  float typingSpeed = vibeTime * 10; // Faster base speed
+  int currentLine = (int)(typingSpeed / 45);
+  
+  // Add restart mechanism - cycle back to beginning after reaching end
+  if (currentLine >= numVibeCodeLines) {
+    vibeTime = 0; // Restart from beginning
+    currentLine = 0;
+  }
+  
+  int currentChar = ((int)typingSpeed % 45);
+  
+  // Determine current phase for dramatic effects
+  int currentPhase = 0;
+  int phaseStart = 0;
+  
+  for (int i = 0; i < numVibeCodePhases; i++) {
+    if (currentLine < vibeCodePhases[i]) {
+      currentPhase = i;
+      if (i > 0) {
+        phaseStart = vibeCodePhases[i - 1];
+      }
+      break;
+    }
+  }
+  
+  // Speed up during meltdown phases
+  if (currentPhase >= 5) { // Meltdown and beyond
+    typingSpeed = vibeTime * 18; // Much faster during chaos
+    currentLine = (int)(typingSpeed / 30);
+    
+    // Add restart for fast phase too
+    if (currentLine >= numVibeCodeLines) {
+      vibeTime = 0; // Restart from beginning
+      currentLine = 0;
+    }
+    
+    currentChar = ((int)typingSpeed % 30);
+  }
+  
+  gfx->setTextSize(1);
+  
+  // Show current phase lines with scrolling
+  int currentY = 10;
+  int maxLinesOnScreen = 11; // Fit nicely on M5StickC Plus2
+  int startLine = max(0, currentLine - maxLinesOnScreen + 1);
+  int endLine = min(currentLine + 1, numVibeCodeLines);
+  
+  for (int line = startLine; line < endLine && currentY < gfx->height() - 15; line++) {
+    const char* sessionLine = vibeCodeSession[line];
+    uint16_t lineColor = gfx->color565(200, 200, 200); // Default gray
+    
+    // Color coding based on content and phase
+    if (strstr(sessionLine, "XScreensAI:") != NULL) {
+      // AI responses - calm blue initially, then urgent colors
+      if (currentPhase < 3) {
+        lineColor = gfx->color565(100, 200, 255); // Calm blue
+      } else if (currentPhase < 5) {
+        lineColor = gfx->color565(255, 200, 100); // Warning orange
+      } else {
+        lineColor = gfx->color565(255, 100, 100); // Panic red
+      }
+    } else if (strstr(sessionLine, "User:") != NULL) {
+      // User messages - escalating frustration
+      if (currentPhase < 2) {
+        lineColor = gfx->color565(100, 255, 100); // Happy green
+      } else if (currentPhase < 4) {
+        lineColor = gfx->color565(255, 255, 100); // Concerned yellow
+      } else if (currentPhase < 6) {
+        lineColor = gfx->color565(255, 150, 0); // Frustrated orange
+      } else {
+        lineColor = gfx->color565(255, 0, 0); // Angry red
+        // Add flicker for extreme anger
+        if (sin(vibeTime * 15) > 0.5) {
+          lineColor = gfx->color565(255, 100, 100);
+        }
+      }
+    } else if (strstr(sessionLine, "#include") != NULL || 
+               strstr(sessionLine, "class") != NULL ||
+               strstr(sessionLine, "{") != NULL ||
+               strstr(sessionLine, "}") != NULL) {
+      // Code - syntax highlighting
+      lineColor = gfx->color565(150, 255, 150); // Light green code
+    } else if (strstr(sessionLine, "✅") != NULL || strstr(sessionLine, "✨") != NULL) {
+      // Success messages
+      lineColor = gfx->color565(0, 255, 0); // Bright green
+    } else if (strstr(sessionLine, "⚠️") != NULL || strstr(sessionLine, "Warning") != NULL) {
+      // Warnings
+      lineColor = gfx->color565(255, 255, 0); // Yellow
+    } else if (strstr(sessionLine, "rm -rf") != NULL) {
+      // Deletion commands - ominous
+      lineColor = gfx->color565(255, 0, 255); // Magenta destruction
+      if (sin(vibeTime * 20) > 0.3) {
+        lineColor = gfx->color565(200, 0, 200); // Intense flicker
+      }
+    } else if (strstr(sessionLine, "CRITICAL ERROR") != NULL ||
+               strstr(sessionLine, "KERNEL PANIC") != NULL ||
+               strstr(sessionLine, "DELETED") != NULL ||
+               strstr(sessionLine, "CORRUPTION") != NULL) {
+      // System errors - flashing red
+      lineColor = gfx->color565(255, 0, 0);
+      if (sin(vibeTime * 25) > 0.2) {
+        lineColor = gfx->color565(255, 150, 150);
+      }
+    } else if (strstr(sessionLine, "Connection lost") != NULL ||
+               strstr(sessionLine, "System offline") != NULL) {
+      // Final messages - dim
+      lineColor = gfx->color565(100, 100, 100);
+    } else if (strstr(sessionLine, "HAVE A NICE DAY") != NULL) {
+      // Sarcastic AI farewell - rainbow cycle
+      float hue = fmod(vibeTime * 120, 360);
+      if (hue < 120) lineColor = gfx->color565(255, hue * 255/120, 0);
+      else if (hue < 240) lineColor = gfx->color565(255 - (hue-120)*255/120, 255, 0);
+      else lineColor = gfx->color565(0, 255, (hue-240)*255/120);
+    }
+    
+    gfx->setCursor(5, currentY);
+    gfx->setTextColor(lineColor);
+    
+    // Handle line length for M5StickC Plus2 - same as other modes
+    if (strlen(sessionLine) > 38) { // Max chars that fit - same as Terminal Hacker
+      char truncated[39];
+      strncpy(truncated, sessionLine, 38);
+      truncated[38] = '\0';
+      gfx->printf("%s", truncated);
+    } else {
+      gfx->printf("%s", sessionLine);
+    }
+    
+    currentY += 11;
+  }
+  
+  // Draw current line being typed (only if we're still in bounds)
+  if (currentLine < numVibeCodeLines && currentY < gfx->height() - 15) {
+    const char* currentVibeSession = vibeCodeSession[currentLine];
+    int lineLength = strlen(currentVibeSession);
+    int charsToShow = min(currentChar, min(lineLength, 38)); // Same as other modes
+    
+    char buffer[40];
+    strncpy(buffer, currentVibeSession, charsToShow);
+    buffer[charsToShow] = '\0';
+    
+    // Typing color based on phase
+    uint16_t typingColor;
+    if (currentPhase <= 2) {
+      typingColor = gfx->color565(255, 255, 255); // White calm
+    } else if (currentPhase <= 4) {
+      typingColor = gfx->color565(255, 255, 100); // Yellow concern
+    } else if (currentPhase <= 6) {
+      typingColor = gfx->color565(255, 150, 100); // Orange frustration
+    } else {
+      typingColor = gfx->color565(255, 100, 100); // Red panic
+    }
+    
+    gfx->setCursor(5, currentY);
+    gfx->setTextColor(typingColor);
+    gfx->printf("%s", buffer);
+    
+    // Cursor blink - faster during panic
+    float blinkSpeed = (currentPhase >= 5) ? 15 : 8;
+    if (sin(vibeTime * blinkSpeed) > 0) {
+      gfx->printf("_");
+    }
+  }
+  
+  // Visual chaos effects during deletion phases
+  if (currentPhase >= 6) { // Deletion phase and beyond
+    // Screen corruption during file deletion
+    for (int corrupt = 0; corrupt < (currentPhase - 5) * 3; corrupt++) {
+      int corruptX = random(gfx->width());
+      int corruptY = random(gfx->height() - 20);
+      uint16_t corruptColor = gfx->color565(255, random(100), random(100));
+      gfx->drawPixel(corruptX, corruptY, corruptColor);
+    }
+  }
+  
+  // Extreme corruption during final system deletion
+  if (currentPhase >= 8) { // Catastrophic phase
+    if (sin(vibeTime * 30) > 0.7) {
+      for (int chaos = 0; chaos < 10; chaos++) {
+        int chaosX = random(gfx->width());
+        int chaosY = random(gfx->height());
+        uint16_t chaosColor = gfx->color565(random(255), 0, random(255));
+        gfx->drawPixel(chaosX, chaosY, chaosColor);
+      }
+    }
+  }
+  
+  gfx->setCursor(5, gfx->height() - 15);
+  gfx->setTextColor(gfx->color565(100, 100, 100));
+  if (showTitles) {
+    if (currentPhase < 9) {
+      gfx->printf("VIBE CODE");
+    } else {
+      gfx->printf("SYSTEM DELETED");
+    }
+  }
+}
+
 void handleInput() {
   M5.update();
   
@@ -2305,6 +3334,12 @@ void handleInput() {
       gfx->printf("Kernel Panic");
     } else if (currentMode == CRASH_GRAMMAR) {
       gfx->printf("Crash Grammar");
+    } else if (currentMode == BIOS_CATASTROPHE) {
+      gfx->printf("BIOS Catastrophe");
+    } else if (currentMode == NETWORK_APOCALYPSE) {
+      gfx->printf("Net Apocalypse");
+    } else if (currentMode == VIBE_CODE_FAIL) {
+      gfx->printf("Vibe Code Fail");
     }
     delay(1000); // Back to 1 second for title display
   }
@@ -2391,6 +3426,15 @@ void loop() {
       break;
     case CRASH_GRAMMAR:
       drawCrashGrammar();
+      break;
+    case BIOS_CATASTROPHE:
+      drawBiosCatastrophe();
+      break;
+    case NETWORK_APOCALYPSE:
+      drawNetworkApocalypse();
+      break;
+    case VIBE_CODE_FAIL:
+      drawVibeCodeDisaster();
       break;
   }
   

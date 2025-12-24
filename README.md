@@ -19,10 +19,11 @@ A specialized screensaver project featuring **10 psychological hacker scenarios*
   - "Been beaten and bitten by memories unkind."
   - Lyrics from Jesus Hooligan on Youtube "Back Room"
 
+
 ### Mode 3: Dogs & Motorbikes
  -Lyrics from Jesus Hooligan on Youtube "I like dogs motorbikes and 3 people"
  -You should check him out. 
- -You won't be disappointed. 
+ 
 
 ### Mode 4: System Error
 - Cascading system failure simulation
@@ -196,5 +197,12 @@ This project extracts and heavily extends the XJack screensaver concept, adding:
 - Role-based dialogue generation with memory decay effects
 
 ## License
+
+Lyrics owned by Jesus Hooligan
+
+This project ports XJack.c originally from XScreensaver by Jamie Zawinski and contributors. The XScreensaver license permits modification and distribution for non-Windows platforms.
+
+Original XScreensaver: https://www.jwz.org/xscreensaver/
+License: MIT-compatible (no Windows restriction clause applies)
 
 Open source - feel free to modify and extend with your own custom psychological thriller themes!

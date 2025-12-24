@@ -116,9 +116,9 @@ This creates **believable system consciousness losing narrative control** - the 
 
 ## Controls
 
-- **Button A**: Switch between 10 modes (cycles through all modes)
+- **M5 Button**: Switch between 10 modes (cycles through all modes)
 - **Button B**: Toggle auto-scroll on/off (15 seconds per mode when enabled)
-- **Serial Output**: Debug information and mode switching feedback
+- **Power Button**: Toggle titles
 
 ## Quick Start
 
